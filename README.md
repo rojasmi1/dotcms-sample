@@ -1,8 +1,7 @@
-# TourOfHeroes
+# dotCMS Sample
 
-Solution for the Angular tutorial 'Tour of Heroes'.
+Angular sample app that feeds from the dotCMS RestAPI
 
-## Live demo [here](http://rojasmi1.tour.of.heroes.surge.sh/dashboard).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 

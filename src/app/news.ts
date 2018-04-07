@@ -1,4 +1,4 @@
-export default class Hero {
+export default class News {
   id: number;
   name: string;
 }

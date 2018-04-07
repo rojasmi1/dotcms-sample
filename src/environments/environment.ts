@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  baseApiURL: 'https://my-json-server.typicode.com/rojasmi1/tour-of-heroes'
+  baseApiURL: 'https://demo.dotcms.com/api/content/'
 };
