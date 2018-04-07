@@ -1,5 +1,9 @@
 # TourOfHeroes
 
+Solution for the Angular tutorial 'Tour of Heroes'.
+
+## Live demo [here](http://rojasmi1.tour.of.heroes.surge.sh/dashboard).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
 ## Development server

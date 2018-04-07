@@ -31,8 +31,8 @@ export class HeroService {
     this.messageService.add(`HeroService: fetched hero id=${id}`);
     return this.http.get<Hero>(`${baseApiUrl}/heroes/${id}`)
     .pipe(
-      tap(hero => this.log(`fetched hero ${id}`)),
-      catchError(this.handleError(`getHero id=${id}`, []))
+      tap(__dirname => this.log(`fetched hero ${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
   }
 
