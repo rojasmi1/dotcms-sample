@@ -8,7 +8,7 @@ import { NewsService } from '../../services/news.service';
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
-  styleUrls: ['./news-detail.component.css']
+  styleUrls: ['./news-detail.component.scss']
 })
 export class NewsDetailComponent implements OnInit {
 
@@ -17,10 +17,13 @@ export class NewsDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private newsService: NewsService
-  ) { }
+  ) {
+    // Subscribe to the params observable so each time the URL changes the news details get update
+    this.route.params
+      .forEach(params => this.getNews());
+   }
 
   ngOnInit() {
-    this.getNews();
   }
 
   getNews(): void {

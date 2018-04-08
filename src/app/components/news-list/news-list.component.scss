@@ -1,0 +1,5 @@
+@import '../../sass/_variables.scss';
+
+.selected a {
+  color: $selected-color;
+}

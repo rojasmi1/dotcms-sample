@@ -1,6 +1,6 @@
 <ul class="news">
-  <li *ngFor="let news of newsList">
-    <a routerLink="/news/{{news.identifier}}" (click)="selectNews(news.identifier)">
+  <li *ngFor="let news of newsList" [class.selected]="selectedId === news.identifier">
+    <a routerLink="/news/{{news.identifier}}" (click)="selectNewsId(news.identifier)">
       <span>{{news.title}}</span>
     </a> 
   </li>

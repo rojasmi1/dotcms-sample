@@ -7,12 +7,13 @@ import { NewsService } from '../../services/news.service';
 @Component({
   selector: 'app-news-list',
   templateUrl: './news-list.component.html',
-  styleUrls: ['./news-list.component.css']
+  styleUrls: ['./news-list.component.scss']
 })
 export class NewsListComponent implements OnInit {
 
   newsList : News[];
   selectedNews : News;
+  selectedId : string;
 
   constructor(
     private newsService:NewsService,
@@ -23,11 +24,17 @@ export class NewsListComponent implements OnInit {
   getNewsList() {
     this.newsService.getNewsList()
       .subscribe(newsList => {
-        this.newsList = newsList;
         const id = this.route.snapshot.paramMap.get('id');
-        if (!id && this.newsList.length) {
-          this.selectNews(this.newsList[0].identifier);
+        
+        // When the list is rendered for the first time first element in the list is selected
+        if (!id && newsList.length) {
+          const firstId = newsList[0].identifier;
+          this.selectNewsDetails(firstId);
+          this.selectNewsId(firstId);
+        } else {
+          this.selectNewsId(id);
         }
+        this.newsList = newsList;
       });
   }
 
@@ -35,9 +42,13 @@ export class NewsListComponent implements OnInit {
     this.getNewsList();
   }
 
-  selectNews(id:string) {
+  selectNewsDetails(id:string) {
       this.newsService.getNews(id)
         .subscribe(news => this.selectedNews = news[0]);
+  }
+
+  selectNewsId(id:string) {
+      this.selectedId = id;
   }
 
 }

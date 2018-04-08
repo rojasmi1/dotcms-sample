@@ -1,0 +1,30 @@
+/* Application-wide Styles */
+@import './_variables.scss';
+@import '~normalize.css/normalize.css';
+
+h1 {
+  color: $title-color;
+  font-family: $base-font;
+  font-size: 250%;
+}
+h2, h3 {
+  color: $base-color;
+  font-family: $base-font;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+body, input[text], button {
+  color: $input-color;
+  font-family: $base-font;
+}
+a {
+  color: $link-color;
+  font-family: $base-font;
+  text-decoration: none;
+}
+
+* {
+  font-family: $base-font;
+}
