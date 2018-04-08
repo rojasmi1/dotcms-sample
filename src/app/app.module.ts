@@ -5,8 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { NewsListComponent } from './news-list/news-list.component';
-import { NewsService } from './news.service';
+import { NewsListComponent } from './components/news-list/news-list.component';
+import { NewsDetailComponent } from './components/news-detail/news-detail.component';
+import { NewsService } from './services/news.service';
 import { AppRoutingModule } from './/app-routing.module';
 
 
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './/app-routing.module';
   declarations: [
     AppComponent,
     NewsListComponent,
+    NewsDetailComponent,
   ],
   imports: [
     BrowserModule,

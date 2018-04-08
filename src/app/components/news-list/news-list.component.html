@@ -1,0 +1,9 @@
+<ul class="news">
+  <li *ngFor="let news of newsList">
+    <a routerLink="/news/{{news.identifier}}" (click)="selectNews(news.identifier)">
+      <span>{{news.title}}</span>
+    </a> 
+  </li>
+</ul>
+
+<app-news-detail [news]="selectedNews"></app-news-detail>
