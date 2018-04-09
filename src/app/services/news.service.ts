@@ -16,13 +16,13 @@ export class NewsService {
     private http: HttpClient) { }
 
   getNewsList(): Observable<News[]> {
-    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News`)
+    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News/orderby/News.sysPublishDate%20desc`)
       .pipe(
       map(data => {
         return data['contentlets'].map(element => {
           const identifier : string = element.identifier;
           const title : string = element.title;
-          const sysPublishDate : string = element.sysPublishDate;
+          const sysPublishDate : Date = new Date(element.sysPublishDate);
           return new News(identifier, title, sysPublishDate);
         });
       }),
@@ -37,7 +37,7 @@ export class NewsService {
         return data['contentlets'].map(element => {
           const identifier : string = element.identifier;
           const title : string = element.title;
-          const sysPublishDate : string = element.sysPublishDate;
+          const sysPublishDate : Date = element.sysPublishDate;
           return new News(identifier, title, sysPublishDate);
         });
       }),

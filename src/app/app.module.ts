@@ -9,6 +9,8 @@ import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsDetailComponent } from './components/news-detail/news-detail.component';
 import { NewsService } from './services/news.service';
 import { AppRoutingModule } from './/app-routing.module';
+import { NewsContainerComponent } from './containers/news-container/news-container.component';
+import { SincePipe } from './pipes/since.pipe';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { AppRoutingModule } from './/app-routing.module';
     AppComponent,
     NewsListComponent,
     NewsDetailComponent,
+    NewsContainerComponent,
+    SincePipe,
   ],
   imports: [
     BrowserModule,

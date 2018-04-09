@@ -1,9 +1,8 @@
 <ul class="news">
-  <li *ngFor="let news of newsList" [class.selected]="selectedId === news.identifier">
+  <li *ngFor="let news of newsList" class="newsItem" [class.selected]="selectedId === news.identifier">
     <a routerLink="/news/{{news.identifier}}" (click)="selectNewsId(news.identifier)">
-      <span>{{news.title}}</span>
+        <h3>{{news.title}}</h3>
+        <span class="publishedLabel">{{news.sysPublishDate | since}} ago</span>
     </a> 
   </li>
 </ul>
-
-<app-news-detail [news]="selectedNews"></app-news-detail>

@@ -1,0 +1,14 @@
+@import '../../sass/_variables.scss';
+
+.newsDetail {
+  .title {
+    padding: 0.5em;
+    background-color: $middle-grey;
+    color: white;
+
+    h2 {
+      color: white;
+    }
+  }
+
+}

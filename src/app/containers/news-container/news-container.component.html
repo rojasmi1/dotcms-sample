@@ -1,0 +1,8 @@
+<section class="container">
+  <article class="leftSidebar">
+    <app-news-list (messageEvent)="receiveMessage($event)"></app-news-list>
+  </article>
+  <article class="contentWrapper">
+    <app-news-detail [news]="selectedNews"></app-news-detail>
+  </article>
+</section>

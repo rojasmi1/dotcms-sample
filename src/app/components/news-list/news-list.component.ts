@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import News from '../../model/news';
@@ -12,8 +12,8 @@ import { NewsService } from '../../services/news.service';
 export class NewsListComponent implements OnInit {
 
   newsList : News[];
-  selectedNews : News;
   selectedId : string;
+  @Output() messageEvent = new EventEmitter<News>();
 
   constructor(
     private newsService:NewsService,
@@ -44,7 +44,9 @@ export class NewsListComponent implements OnInit {
 
   selectNewsDetails(id:string) {
       this.newsService.getNews(id)
-        .subscribe(news => this.selectedNews = news[0]);
+        .subscribe(news => {
+          this.messageEvent.emit(news[0]);
+        });
   }
 
   selectNewsId(id:string) {

@@ -5,10 +5,18 @@
 h1 {
   color: $title-color;
   font-family: $base-font;
+  margin: 0;
+  padding: 0.2em;
   font-size: 250%;
 }
+h2 {
+  font-size: 22px;
+}
+h3 {
+  font-size: 18px;
+}
 h2, h3 {
-  color: $base-color;
+  color: $dark-grey;
   font-family: $base-font;
   font-weight: lighter;
 }
@@ -16,7 +24,7 @@ body {
   margin: 2em;
 }
 body, input[text], button {
-  color: $input-color;
+  color: $middle-grey;
   font-family: $base-font;
 }
 a {

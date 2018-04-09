@@ -1,4 +1,6 @@
-<div *ngIf="news">
-  <h2>{{news.title}} Details</h2>
-  <div><span>id: </span>{{news.identifier}}</div>
+<div *ngIf="news" class="newsDetail">
+  <div class="title">
+    <h2>{{news.title}}</h2>
+    <span class="publishedLabel">Published {{news.sysPublishDate | date}}</span>
+  </div>
 </div>

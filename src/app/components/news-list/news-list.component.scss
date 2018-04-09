@@ -1,5 +1,14 @@
 @import '../../sass/_variables.scss';
 
-.selected a {
-  color: $selected-color;
+.news {
+  padding: 0;
+
+  .newsItem {
+    list-style: none;
+  }
+  
+}
+
+.selected {
+  background-color: $light-grey;
 }
