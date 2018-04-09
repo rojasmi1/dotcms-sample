@@ -2,11 +2,32 @@
 
 .news {
   padding: 0;
+  margin: 0;
+}
 
-  .newsItem {
-    list-style: none;
+.newsItem {
+  list-style: none;
+  margin: 0 0 1em 0;
+
+  a {
+    display: flex;
   }
-  
+
+  .newsThumbnail {
+    width: 75px;
+    height: 75px;
+    color: $dark-grey;
+    font-size: 11px;
+  }
+
+  .textWrapper {
+    padding: 0 0.2em;
+  }
+
+  .publishedLabel {
+    color: $middle-grey;
+    font-size: 11px;
+  }
 }
 
 .selected {

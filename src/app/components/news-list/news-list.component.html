@@ -1,8 +1,11 @@
 <ul class="news">
   <li *ngFor="let news of newsList" class="newsItem" [class.selected]="selectedId === news.identifier">
     <a routerLink="/news/{{news.identifier}}" (click)="selectNewsId(news.identifier)">
-        <h3>{{news.title}}</h3>
-        <span class="publishedLabel">{{news.sysPublishDate | since}} ago</span>
+        <img class="newsThumbnail" src="{{imageApiURL}}/{{news.imageContentAsset}}/fileAsset/filter/Thumbnail/thumbnail_w/75/thumbnail_h/75" [alt]="news.title">
+        <div class="textWrapper">
+          <h3>{{news.title}}</h3>
+          <span class="publishedLabel">{{news.sysPublishDate | since}} ago</span>
+        </div>
     </a> 
   </li>
 </ul>

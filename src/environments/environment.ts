@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  baseApiURL: 'https://demo.dotcms.com/api/content/'
+  baseApiURL: 'https://demo.dotcms.com/api/content/',
+  baseImageApiURL: 'https://demo.dotcms.com/dA'
 };

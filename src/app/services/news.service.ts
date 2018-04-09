@@ -23,7 +23,8 @@ export class NewsService {
           const identifier : string = element.identifier;
           const title : string = element.title;
           const sysPublishDate : Date = new Date(element.sysPublishDate);
-          return new News(identifier, title, sysPublishDate);
+          const imageContentAsset : string = element.imageContentAsset;
+          return new News(identifier, title, sysPublishDate, imageContentAsset);
         });
       }),
       catchError(this.handleError('getNewsList', []))
@@ -38,7 +39,8 @@ export class NewsService {
           const identifier : string = element.identifier;
           const title : string = element.title;
           const sysPublishDate : Date = element.sysPublishDate;
-          return new News(identifier, title, sysPublishDate);
+          const imageContentAsset : string = element.imageContentAsset;
+          return new News(identifier, title, sysPublishDate, imageContentAsset);
         });
       }),
       catchError(this.handleError('getNews', []))

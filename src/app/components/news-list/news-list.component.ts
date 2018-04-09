@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import News from '../../model/news';
 import { NewsService } from '../../services/news.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-news-list',
@@ -13,6 +14,7 @@ export class NewsListComponent implements OnInit {
 
   newsList : News[];
   selectedId : string;
+  imageApiURL : string = environment.baseImageApiURL;
   @Output() messageEvent = new EventEmitter<News>();
 
   constructor(
