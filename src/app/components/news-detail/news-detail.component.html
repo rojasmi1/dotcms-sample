@@ -1,4 +1,7 @@
 <div *ngIf="news" class="newsDetail">
+  <section class="heroImage">
+    <img src="{{imageApiURL}}/{{news.imageContentAsset}}/fileAsset/filter/Resize/resize_w/500/resize_h/300" [alt]="news.title">
+  </section>
   <section class="title">
     <h2>{{news.title}}</h2>
     <span class="publishedLabel">Published {{news.sysPublishDate | date}}</span>

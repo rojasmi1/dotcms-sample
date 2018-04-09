@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import News from '../../model/news';
 import { NewsService } from '../../services/news.service';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { NewsService } from '../../services/news.service';
 export class NewsDetailComponent implements OnInit {
 
   @Input() news: News;
-
+  imageApiURL : string = environment.baseImageApiURL;
+  
   constructor(
     private route: ActivatedRoute,
     private newsService: NewsService

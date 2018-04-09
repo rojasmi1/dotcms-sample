@@ -16,7 +16,7 @@ export class NewsService {
     private http: HttpClient) { }
 
   getNewsList(): Observable<News[]> {
-    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News%20+deleted:false%20+working:true/orderby/News.sysPublishDate%20desc`)
+    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News +deleted:false +working:true/orderby/News.sysPublishDate desc`)
       .pipe(
       map(data => {
         return data['contentlets'].map(this.mapJsonToNews);
@@ -26,7 +26,9 @@ export class NewsService {
   }
 
   getNewsListByRange(from: Date, to: Date): Observable<News[]> {
-    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News%20+deleted:false%20+working:true/orderby/News.sysPublishDate%20desc`)
+    return this.http.get<News[]>(
+      `${baseApiUrl}/query/+contentType:News +deleted:false +working:true +News.sysPublishDate:[${from} to ${to}
+      /orderby/News.sysPublishDate desc`)
       .pipe(
       map(data => {
         return data['contentlets'].map(this.mapJsonToNews);
