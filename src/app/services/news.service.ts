@@ -19,14 +19,19 @@ export class NewsService {
     return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News%20+deleted:false%20+working:true/orderby/News.sysPublishDate%20desc`)
       .pipe(
       map(data => {
-        return data['contentlets'].map(element => {
-          const {identifier, title, sysPublishDate, imageContentAsset, story}:
-          {identifier: string, title: string, sysPublishDate: Date, imageContentAsset: string, story: string} = element;
-
-          return new News(identifier, title, sysPublishDate, imageContentAsset, story);
-        });
+        return data['contentlets'].map(this.mapJsonToNews);
       }),
       catchError(this.handleError('getNewsList', []))
+      );
+  }
+
+  getNewsListByRange(from: Date, to: Date): Observable<News[]> {
+    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News%20+deleted:false%20+working:true/orderby/News.sysPublishDate%20desc`)
+      .pipe(
+      map(data => {
+        return data['contentlets'].map(this.mapJsonToNews);
+      }),
+      catchError(this.handleError('getNewsListByRange', []))
       );
   }
 
@@ -34,14 +39,20 @@ export class NewsService {
     return this.http.get<News[]>(`${baseApiUrl}/id/${identifier}`)
       .pipe(
       map(data => {
-        return data['contentlets'].map(element => {
-          const {identifier, title, sysPublishDate, imageContentAsset, story}:
-          {identifier: string, title: string, sysPublishDate: Date, imageContentAsset: string, story: string} = element;
-          return new News(identifier, title, sysPublishDate, imageContentAsset, story);
-        });
+        return data['contentlets'].map(this.mapJsonToNews);
       }),
       catchError(this.handleError('getNews', []))
       );
+  }
+
+  /**
+   * Maps a JSON object to a News instance
+   */
+  private mapJsonToNews(element): News {
+        const {identifier, title, sysPublishDate, imageContentAsset, story}:
+        {identifier: string, title: string, sysPublishDate: Date, imageContentAsset: string, story: string} = element;
+
+        return new News(identifier, title, sysPublishDate, imageContentAsset, story);
   }
 
   /**
