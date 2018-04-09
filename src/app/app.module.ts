@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsDetailComponent } from './components/news-detail/news-detail.component';
 import { NewsService } from './services/news.service';
+import { StateManagerService } from './services/state-manager.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { NewsContainerComponent } from './containers/news-container/news-container.component';
 import { SincePipe } from './pipes/since.pipe';
+import { DateFilterComponent } from './components/date-filter/date-filter.component';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { SincePipe } from './pipes/since.pipe';
     NewsDetailComponent,
     NewsContainerComponent,
     SincePipe,
+    DateFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { SincePipe } from './pipes/since.pipe';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [NewsService],
+  providers: [NewsService, StateManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

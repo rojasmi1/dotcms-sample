@@ -16,15 +16,14 @@ export class NewsService {
     private http: HttpClient) { }
 
   getNewsList(): Observable<News[]> {
-    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News/orderby/News.sysPublishDate%20desc`)
+    return this.http.get<News[]>(`${baseApiUrl}/query/+contentType:News%20+deleted:false%20+working:true/orderby/News.sysPublishDate%20desc`)
       .pipe(
       map(data => {
         return data['contentlets'].map(element => {
-          const identifier : string = element.identifier;
-          const title : string = element.title;
-          const sysPublishDate : Date = new Date(element.sysPublishDate);
-          const imageContentAsset : string = element.imageContentAsset;
-          return new News(identifier, title, sysPublishDate, imageContentAsset);
+          const {identifier, title, sysPublishDate, imageContentAsset, story}:
+          {identifier: string, title: string, sysPublishDate: Date, imageContentAsset: string, story: string} = element;
+
+          return new News(identifier, title, sysPublishDate, imageContentAsset, story);
         });
       }),
       catchError(this.handleError('getNewsList', []))
@@ -36,11 +35,9 @@ export class NewsService {
       .pipe(
       map(data => {
         return data['contentlets'].map(element => {
-          const identifier : string = element.identifier;
-          const title : string = element.title;
-          const sysPublishDate : Date = element.sysPublishDate;
-          const imageContentAsset : string = element.imageContentAsset;
-          return new News(identifier, title, sysPublishDate, imageContentAsset);
+          const {identifier, title, sysPublishDate, imageContentAsset, story}:
+          {identifier: string, title: string, sysPublishDate: Date, imageContentAsset: string, story: string} = element;
+          return new News(identifier, title, sysPublishDate, imageContentAsset, story);
         });
       }),
       catchError(this.handleError('getNews', []))

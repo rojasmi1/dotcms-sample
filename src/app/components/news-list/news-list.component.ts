@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import News from '../../model/news';
 import { NewsService } from '../../services/news.service';
+import { StateManagerService } from '../../services/state-manager.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -19,6 +20,7 @@ export class NewsListComponent implements OnInit {
 
   constructor(
     private newsService:NewsService,
+    private stateManagerService:StateManagerService,
     private route:ActivatedRoute) { 
 
   }
@@ -42,6 +44,7 @@ export class NewsListComponent implements OnInit {
 
   ngOnInit() {
     this.getNewsList();
+    this.stateManagerService.currentFilter.subscribe(filter => this.changeFilter(filter));
   }
 
   selectNewsDetails(id:string) {
@@ -53,6 +56,10 @@ export class NewsListComponent implements OnInit {
 
   selectNewsId(id:string) {
       this.selectedId = id;
+  }
+
+  changeFilter(filter) {
+    this.getNewsList();
   }
 
 }

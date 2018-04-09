@@ -3,4 +3,7 @@
 .header {
   background-color: $dark-grey;
   padding: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
