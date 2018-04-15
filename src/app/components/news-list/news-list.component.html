@@ -1,4 +1,4 @@
-<ul class="news">
+<ul class="news" *ngIf="newsList && newsList.length">
   <li *ngFor="let news of newsList" class="newsItem" [class.selected]="selectedId === news.identifier">
     <a routerLink="/news/{{news.identifier}}" (click)="selectNewsId(news.identifier)">
         <img class="newsThumbnail" src="{{imageApiURL}}/{{news.imageContentAsset}}/fileAsset/filter/Thumbnail/thumbnail_w/75/thumbnail_h/75" [alt]="news.title">
@@ -9,3 +9,6 @@
     </a> 
   </li>
 </ul>
+<div *ngIf="newsList && !newsList.length">
+  <h3>No results found!</h3>
+</div>

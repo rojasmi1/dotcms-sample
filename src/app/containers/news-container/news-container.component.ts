@@ -15,7 +15,6 @@ export class NewsContainerComponent implements OnInit {
   constructor(private stateManagerService:StateManagerService) { }
 
   ngOnInit() {
-    this.stateManagerService.changeFilterSelection("lastweek");
   }
 
   receiveMessage($event) {

@@ -25,7 +25,7 @@ export class NewsService {
       );
   }
 
-  getNewsListByRange(from: Date, to: Date): Observable<News[]> {
+  getNewsListByRange(from: string, to: string): Observable<News[]> {
     return this.http.get<News[]>(
       `${baseApiUrl}/query/+contentType:News +deleted:false +working:true +News.sysPublishDate:[${from} to ${to}
       /orderby/News.sysPublishDate desc`)
@@ -66,7 +66,7 @@ export class NewsService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      console.error(error); // log to console instead
+      console.error(operation, error); // log to console instead
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

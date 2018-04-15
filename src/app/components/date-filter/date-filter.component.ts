@@ -9,13 +9,21 @@ import { StateManagerService } from '../../services/state-manager.service';
 })
 export class DateFilterComponent implements OnInit {
 
+  timeFilter : any [] = [
+    {value: 'all', text: 'Filter by date'},
+    {value: 'today', text: 'Today'},
+    {value: 'yesterday', text: 'Yesterday'},
+    {value: 'lastweek', text: 'Last Wekk'}
+    ];
+  selectedFilter : string = 'all';
+
   constructor(private stateManagerService:StateManagerService) { }
 
   ngOnInit() {
   }
 
-  filterChanged(filter) {
-    this.stateManagerService.changeFilterSelection(filter);
+  filterChanged() {
+    this.stateManagerService.changeFilterSelection(this.selectedFilter);
   }
 
 }
